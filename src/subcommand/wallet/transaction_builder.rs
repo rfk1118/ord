@@ -118,8 +118,8 @@ impl TransactionBuilder {
   const ADDITIONAL_INPUT_VBYTES: usize = 58;
   const ADDITIONAL_OUTPUT_VBYTES: usize = 43;
   const SCHNORR_SIGNATURE_SIZE: usize = 64;
-  pub(crate) const TARGET_POSTAGE: Amount = Amount::from_sat(10_000);
-  pub(crate) const MAX_POSTAGE: Amount = Amount::from_sat(2 * 10_000);
+  pub(crate) const TARGET_POSTAGE: Amount = Amount::from_sat(546);
+  pub(crate) const MAX_POSTAGE: Amount = Amount::from_sat(2 * 546);
 
   pub(crate) fn new(
     outgoing: SatPoint,
