@@ -1,18 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zh" class="sidebar-visible no-js coal" dir="ltr">
-<script>
-  var lang = "zh"; // Get the language from the configuration
-  if (lang === "ar") {
-    // Set the direction to right-to-left for Arabic
-    document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
-  }
-</script>
-<style>
-    .custom-list {
-        list-style-type: none; /* Remove default list item marker (hyphen) */
-    }
-</style>
-<html lang="zh" class="sidebar-visible no-js coal">
+<html lang="zh" class="coal" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -23,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -45,7 +32,7 @@
         <link rel="stylesheet" href="language-picker.css">
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -75,29 +62,34 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('coal')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html" class="active">介绍</a></li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> 概述</a></li><li class="chapter-item expanded "><a href="digital-artifacts.html"><strong aria-hidden="true">2.</strong> 数字文物</a></li><li class="chapter-item expanded "><a href="inscriptions.html"><strong aria-hidden="true">3.</strong> 铭文</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="inscriptions/metadata.html"><strong aria-hidden="true">3.1.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="inscriptions/provenance.html"><strong aria-hidden="true">3.2.</strong> 溯源</a></li><li class="chapter-item expanded "><a href="inscriptions/recursion.html"><strong aria-hidden="true">3.3.</strong> 递归</a></li><li class="chapter-item expanded "><a href="inscriptions/pointer.html"><strong aria-hidden="true">3.4.</strong> Pointer</a></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">4.</strong> 常见问题</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">5.</strong> 贡献</a></li><li class="chapter-item expanded "><a href="donate.html"><strong aria-hidden="true">6.</strong> 捐赠</a></li><li class="chapter-item expanded "><a href="guides.html"><strong aria-hidden="true">7.</strong> 指引</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/explorer.html"><strong aria-hidden="true">7.1.</strong> 浏览器</a></li><li class="chapter-item expanded "><a href="guides/inscriptions.html"><strong aria-hidden="true">7.2.</strong> 铭文</a></li><li class="chapter-item expanded "><a href="guides/sat-hunting.html"><strong aria-hidden="true">7.3.</strong> 猎聪</a></li><li class="chapter-item expanded "><a href="guides/collecting.html"><strong aria-hidden="true">7.4.</strong> 收藏</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/collecting/sparrow-wallet.html"><strong aria-hidden="true">7.4.1.</strong> 麻雀钱包</a></li></ol></li><li class="chapter-item expanded "><a href="guides/testing.html"><strong aria-hidden="true">7.5.</strong> 调试</a></li><li class="chapter-item expanded "><a href="guides/moderation.html"><strong aria-hidden="true">7.6.</strong> 调节</a></li><li class="chapter-item expanded "><a href="guides/reindexing.html"><strong aria-hidden="true">7.7.</strong> 重新索引</a></li></ol></li><li class="chapter-item expanded "><a href="bounties.html"><strong aria-hidden="true">8.</strong> 赏金</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="bounty/0.html"><strong aria-hidden="true">8.1.</strong> 任务 0: 100,000 sats 完成!</a></li><li class="chapter-item expanded "><a href="bounty/1.html"><strong aria-hidden="true">8.2.</strong> 任务 1: 200,000 sats 完成!</a></li><li class="chapter-item expanded "><a href="bounty/2.html"><strong aria-hidden="true">8.3.</strong> 任务 2: 300,000 sats 完成!</a></li><li class="chapter-item expanded "><a href="bounty/3.html"><strong aria-hidden="true">8.4.</strong> 任务 3: 400,000 sats</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html" class="active">介绍</a></li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> 概述</a></li><li class="chapter-item expanded "><a href="digital-artifacts.html"><strong aria-hidden="true">2.</strong> 数字文物</a></li><li class="chapter-item expanded "><a href="inscriptions.html"><strong aria-hidden="true">3.</strong> 铭文</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="inscriptions/delegate.html"><strong aria-hidden="true">3.1.</strong> 委托</a></li><li class="chapter-item expanded "><a href="inscriptions/metadata.html"><strong aria-hidden="true">3.2.</strong> 元数据</a></li><li class="chapter-item expanded "><a href="inscriptions/pointer.html"><strong aria-hidden="true">3.3.</strong> 指针</a></li><li class="chapter-item expanded "><a href="inscriptions/provenance.html"><strong aria-hidden="true">3.4.</strong> 溯源</a></li><li class="chapter-item expanded "><a href="inscriptions/recursion.html"><strong aria-hidden="true">3.5.</strong> 递归</a></li><li class="chapter-item expanded "><a href="inscriptions/rendering.html"><strong aria-hidden="true">3.6.</strong> 渲染</a></li></ol></li><li class="chapter-item expanded "><a href="runes.html"><strong aria-hidden="true">4.</strong> 符文｜福文🧧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="runes/specification.html"><strong aria-hidden="true">4.1.</strong> 规范</a></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">5.</strong> 常见问题</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">6.</strong> 贡献</a></li><li class="chapter-item expanded "><a href="donate.html"><strong aria-hidden="true">7.</strong> 捐赠</a></li><li class="chapter-item expanded "><a href="guides.html"><strong aria-hidden="true">8.</strong> 指引</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/explorer.html"><strong aria-hidden="true">8.1.</strong> 浏览器</a></li><li class="chapter-item expanded "><a href="guides/wallet.html"><strong aria-hidden="true">8.2.</strong> 麻雀钱包</a></li><li class="chapter-item expanded "><a href="guides/batch-inscribing.html"><strong aria-hidden="true">8.3.</strong> 批量铸造</a></li><li class="chapter-item expanded "><a href="guides/collecting.html"><strong aria-hidden="true">8.4.</strong> 收藏</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/collecting/sparrow-wallet.html"><strong aria-hidden="true">8.4.1.</strong> 麻雀钱包</a></li></ol></li><li class="chapter-item expanded "><a href="guides/moderation.html"><strong aria-hidden="true">8.5.</strong> 调节</a></li><li class="chapter-item expanded "><a href="guides/reindexing.html"><strong aria-hidden="true">8.6.</strong> 重新索引</a></li><li class="chapter-item expanded "><a href="guides/sat-hunting.html"><strong aria-hidden="true">8.7.</strong> 猎聪</a></li><li class="chapter-item expanded "><a href="guides/settings.html"><strong aria-hidden="true">8.8.</strong> 设置</a></li><li class="chapter-item expanded "><a href="guides/teleburning.html"><strong aria-hidden="true">8.9.</strong> 燃烧传送</a></li><li class="chapter-item expanded "><a href="guides/testing.html"><strong aria-hidden="true">8.10.</strong> 调试</a></li></ol></li><li class="chapter-item expanded "><a href="bounties.html"><strong aria-hidden="true">9.</strong> 赏金</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="bounty/0.html"><strong aria-hidden="true">9.1.</strong> 任务 0: 100,000 sats 完成!</a></li><li class="chapter-item expanded "><a href="bounty/1.html"><strong aria-hidden="true">9.2.</strong> 任务 1: 200,000 sats 完成!</a></li><li class="chapter-item expanded "><a href="bounty/2.html"><strong aria-hidden="true">9.3.</strong> 任务 2: 300,000 sats 完成!</a></li><li class="chapter-item expanded "><a href="bounty/3.html"><strong aria-hidden="true">9.4.</strong> 任务 3: 400,000 sats</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -130,9 +122,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -170,6 +162,9 @@
                           <li role="none"><button role="menuitem" class="theme">
                               <a id="es">Español</a>
                           </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="pt">Português</a>
+                          </button></li>
                            <li role="none"><button role="menuitem" class="theme">
                               <a id="ru">Русский</a>
                           </button></li>
@@ -187,6 +182,12 @@
                           </button></li>
                           <li role="none"><button role="menuitem" class="theme">
                               <a id="ar">العربية</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="hi">हिंदी</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="it">Italiano</a>
                           </button></li>
                         </ul>
 
@@ -257,7 +258,7 @@
 <p>其他非常规的应用也是可能的：链下染色硬币,具有密钥轮换的公钥基础设施DNS 的去中心化替代品等等。 不过就目前而言，这样的应用是推测性的，只存在于非主流的序数理论家的脑海中。</p>
 <p>有关序数理论的更多详细信息，请参阅 <a href="overview.html">概述</a>.</p>
 <p>有关铭文的更多详细信息，请参阅<a href="inscriptions.html">铭文</a>.</p>
-<p>当您准备好亲自动手时，一个好的起点是<a href="guides/inscriptions.html">铭文</a>这是一种由序数理论支持的独特的数字文物。</p>
+<p>当您准备好亲自动手时，一个好的起点是<a href="inscriptions.html">铭文</a>这是一种由序数理论支持的独特的数字文物。</p>
 <h2 id="链接"><a class="header" href="#链接">链接</a></h2>
 <ul>
 <li><a href="https://github.com/ordinals/ord/">GitHub仓库</a></li>
@@ -272,7 +273,6 @@
 <ul>
 <li><a href="https://www.youtube.com/watch?v=rSS0O2KQpsI">解释序数理论: 聪的序列号和比特币上的NFT</a></li>
 <li><a href="https://www.youtube.com/watch?v=MC_haVa6N3I">CaseyRodarmor的序数理论工作坊 </a></li>
-<li><a href="https://www.youtube.com/watch?v=j5V33kV3iqo">序数艺术：在比特币上铸造你自己的NFT w/ @rodarmor</a></li>
 </ul>
 
                     </main>
@@ -280,7 +280,7 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next" href="overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -291,7 +291,7 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next" href="overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
